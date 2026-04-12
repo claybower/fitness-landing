@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Ascend Program</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background: var(--bg); }
+
+    .checkout-page {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .checkout-hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .checkout-hero .eyebrow { margin-bottom: 16px; }
+
+    .checkout-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      color: var(--text-dark);
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+
+    .checkout-hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .checkout-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .checkout-price-big {
+      font-family: var(--font-display);
+      font-size: 52px;
+      color: var(--text-dark);
+    }
+
+    .checkout-price-old {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+
+    .checkout-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--black);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 18px 48px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .checkout-cta-btn:hover {
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+    }
+
+    /* Features list */
+    .checkout-features {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .checkout-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .checkout-feature-num {
+      font-family: var(--font-display);
+      font-size: 20px;
+      color: var(--text-light);
+      flex-shrink: 0;
+      width: 32px;
+    }
+
+    .checkout-feature-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .checkout-feature-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Disclaimer */
+    .checkout-disclaimer {
+      margin-top: 48px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .checkout-disclaimer p {
+      font-size: 11px;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .checkout-disclaimer a {
+      color: var(--text-muted);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="ascend.html" class="nav-brand">
+    <span class="nav-creator">&larr; Ascend Program</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://youtube.com/@clayjbower" target="_blank" rel="noopener">YouTube</a></li>
+    <li><a href="https://instagram.com/clayb0wer" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://tiktok.com/@clayjbower" target="_blank" rel="noopener">TikTok</a></li>
+  </ul>
+  <div class="nav-right"></div>
+</nav>
+
+<div class="checkout-page">
+
+  <div class="checkout-hero">
+    <p class="eyebrow">Clay Bower's</p>
+    <h1 class="checkout-hero-title">Ascend Program</h1>
+    <p class="checkout-hero-sub">Years of training, research, and trial-and-error distilled into one program. Everything you need to build the physique you've always wanted.</p>
+
+    <div class="checkout-price-row">
+      <span class="checkout-price-big">$29</span>
+      <span class="checkout-price-old">$50</span>
+    </div>
+
+    <a href="pay.html" class="checkout-cta-btn">Get Ascend</a>
+  </div>
+
+  <div class="checkout-features">
+    <div class="checkout-feature">
+      <div class="checkout-feature-num">01</div>
+      <div>
+        <div class="checkout-feature-title">Complete Exercise Library</div>
+        <div class="checkout-feature-desc">Every movement filmed with form cues, common mistakes, and variations for any equipment setup.</div>
+      </div>
+    </div>
+    <div class="checkout-feature">
+      <div class="checkout-feature-num">02</div>
+      <div>
+        <div class="checkout-feature-title">Diet &amp; Nutrition Structure</div>
+        <div class="checkout-feature-desc">How to eat for your goals, when to eat, how much, and how to stay consistent without obsessing.</div>
+      </div>
+    </div>
+    <div class="checkout-feature">
+      <div class="checkout-feature-num">03</div>
+      <div>
+        <div class="checkout-feature-title">Bulking &amp; Cutting Strategy</div>
+        <div class="checkout-feature-desc">How to bulk without getting fat and cut without losing muscle. The strategy, the numbers, and when to switch.</div>
+      </div>
+    </div>
+    <div class="checkout-feature">
+      <div class="checkout-feature-num">04</div>
+      <div>
+        <div class="checkout-feature-title">Mindset &amp; Consistency</div>
+        <div class="checkout-feature-desc">The mental framework for staying consistent, pushing through plateaus, and building discipline that lasts.</div>
+      </div>
+    </div>
+    <div class="checkout-feature">
+      <div class="checkout-feature-num">05</div>
+      <div>
+        <div class="checkout-feature-title">Progress Tracking</div>
+        <div class="checkout-feature-desc">A simple system to measure results, know when to adjust, and track more than just the scale.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-disclaimer">
+    <p>This is a digital product. Due to the nature of digital goods, all sales are final and no refunds will be issued. By purchasing, you agree to these terms. Questions? <a href="mailto:clayjbower@gmail.com">clayjbower@gmail.com</a></p>
+  </div>
+
+</div>
+
+<script>
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50)
+  }, { passive: true })
+</script>
+
+</body>
+</html>

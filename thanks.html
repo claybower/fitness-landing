@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — Ascend Program</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { background: var(--bg-alt); }
+
+    .thanks-wrap {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 160px 24px 100px;
+      text-align: center;
+    }
+
+    .thanks-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--black);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 28px;
+    }
+
+    .thanks-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 52px);
+      color: var(--text-dark);
+      line-height: 1.0;
+      margin-bottom: 16px;
+    }
+
+    .thanks-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+
+    .download-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+
+    .download-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .download-info {
+      flex: 1;
+    }
+
+    .download-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .download-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--text-dark);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: #fff;
+      border-radius: 100px;
+      padding: 12px 24px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+    .download-btn:hover {
+      transform: scale(1.03) translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .thanks-note {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .thanks-back {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .thanks-back:hover { color: var(--text-dark); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-creator">&larr; Clay Bower</span>
+  </a>
+  <ul class="nav-links"></ul>
+  <div class="nav-right"></div>
+</nav>
+
+<div class="thanks-wrap">
+  <div class="thanks-icon">&check;</div>
+  <h1 class="thanks-title">You're In</h1>
+  <p class="thanks-sub">Payment confirmed. Welcome to Ascend. Download your files below and bookmark this page &mdash; this is your permanent access link.</p>
+
+  <div class="download-cards">
+    <div class="download-card">
+      <div class="download-info">
+        <div class="download-label">Video Guide</div>
+        <div class="download-name">Ascend Program Guide</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1NvoUtSOWd_o73lPlGt1Uqj8_m8fR90W8/view?usp=sharing" class="download-btn" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Open
+      </a>
+    </div>
+
+    <div class="download-card">
+      <div class="download-info">
+        <div class="download-label">Program File</div>
+        <div class="download-name">Ascend Program</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1cck5pAQWpyHtLlz1KK3e9dTxxfn19lr1/view?usp=sharing" class="download-btn" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Open
+      </a>
+    </div>
+  </div>
+
+  <p class="thanks-note">Having trouble? Email me at <a href="mailto:clayjbower@gmail.com" style="color: var(--text-muted); text-decoration: underline;">clayjbower@gmail.com</a> and I'll get you sorted.</p>
+
+  <a href="index.html" class="thanks-back">&larr; Back to claybower.com</a>
+</div>
+
+<script>
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50)
+  }, { passive: true })
+</script>
+
+</body>
+</html>

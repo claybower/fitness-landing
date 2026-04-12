@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clay Bower</title>
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<!-- ══ NEWSLETTER MODAL ══ -->
+<div class="modal-overlay" id="newsletter-modal">
+  <div class="modal">
+    <span class="modal-close" id="modal-close">&times;</span>
+    <h3>Join the List</h3>
+    <p>Get training tips, program updates, and early access to everything I drop — straight to your inbox.</p>
+    <form class="modal-form" id="newsletter-form">
+      <input type="text" id="nl-name" placeholder="First name" required />
+      <input type="email" id="nl-email" placeholder="Email address" required />
+      <button type="submit" class="btn" id="nl-btn">Subscribe Free</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <button class="nav-newsletter" id="newsletter-btn">Join My Newsletter</button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#codes">Shop</a></li>
+    <li><a href="#watch">Watch</a></li>
+  </ul>
+  <a href="index.html" class="nav-logo">Clay Bower</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-grid">
+
+    <div class="hero-photo-wrap" id="hero-photo-wrap">
+      <div class="hero-photo" id="hero-photo">
+        <img src="images/clay-portrait.jpeg" alt="Clay Bower" />
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <h1 class="hero-name">Clay<br>Bower</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline"><em>My dad taught me how to lift.<br>Everything else, I figured out myself.</em></p>
+      <div class="hero-socials">
+        <a href="https://youtube.com/@clayjbower" class="social-pill" target="_blank" rel="noopener">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a href="https://tiktok.com/@clayjbower" class="social-pill" target="_blank" rel="noopener">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+          TikTok
+        </a>
+        <a href="https://instagram.com/clayb0wer" class="social-pill" target="_blank" rel="noopener">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+      </div>
+      <a href="ascend.html" class="btn">View My Program</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PHOTO MARQUEE ══ -->
+<section id="marquee">
+  <div class="marquee-track">
+    <div class="marquee-photo"><img src="images/clay-gym9.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym3.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym2.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym11.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym18.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym8.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym22.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym13.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym6.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym5.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym19.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym10.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym4.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym21.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym1.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym14.jpeg" alt="" /></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-photo"><img src="images/clay-gym9.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym3.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym2.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym11.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym18.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym8.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym22.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym13.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym6.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym5.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym19.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym10.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym4.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym21.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym1.jpeg" alt="" /></div>
+    <div class="marquee-photo"><img src="images/clay-gym14.jpeg" alt="" /></div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<hr class="section-divider" />
+<section id="about">
+  <div class="about-inner">
+    <!-- Left: text -->
+    <div>
+      <p class="eyebrow">About Me</p>
+      <h2 class="section-title">Clay Bower</h2>
+      <p class="about-body">
+        My dad put a barbell in my hands when I was young, and I never put it down. I spent years testing everything on myself — Ascend is what actually works.
+      </p>
+    </div>
+    <!-- Right: stats card -->
+    <div class="stats-card-2x2">
+      <div class="stat-item">
+        <div class="stat-num">60K+</div>
+        <div class="stat-label">Followers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10</div>
+        <div class="stat-label">5-Star Reviews</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Members Helped</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$29</div>
+        <div class="stat-label">Program Price</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+<!-- ══ PROGRAMS ══ -->
+<section id="programs">
+  <div class="section-header">
+    <p class="eyebrow">Training</p>
+    <h2 class="section-title">My Programs</h2>
+  </div>
+
+  <a href="ascend.html" class="program-card" id="program-card">
+    <div class="program-card-img">
+      <img src="images/clay-program.jpeg" alt="Ascend Program" />
+    </div>
+    <div class="program-card-body">
+      <span class="program-badge">Training · Diet · Mindset</span>
+      <div class="program-name">Ascend<br>Program</div>
+      <p class="program-desc">Everything you need to build the aesthetic physique you want — exercise library, nutrition structure, bulking and cutting strategy, and the mindset to actually stick with it.</p>
+      <div class="program-pricing">
+        <span class="program-price-new">$29</span>
+        <span class="program-price-old">$50</span>
+      </div>
+      <span class="program-cta-link">View Program →</span>
+    </div>
+  </a>
+</section>
+
+<hr class="section-divider" />
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <p class="eyebrow">Reviews</p>
+    <h2 class="section-title">What People Are Saying</h2>
+  </div>
+
+  <div class="testi-track">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"This program completely changed how I train. Down 22 lbs and I actually look the way I always wanted. Worth every dollar."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Marcus T.</div>
+          <div class="testi-handle">@marcust_</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I've tried so many programs and always quit. This is the first one I actually stuck with. The diet section alone was a game changer."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Jordan K.</div>
+          <div class="testi-handle">@jordank</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The exercise videos are incredible. Every movement broken down perfectly. Gained 11 lbs of muscle in 3 months following this."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Sarah M.</div>
+          <div class="testi-handle">@sarahm_fit</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Clay's mindset section hit different. I finally understand why I kept stalling and how to push through. Already referred three friends."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Devon R.</div>
+          <div class="testi-handle">@devonr</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The bulking and cutting breakdown is exactly what I needed. No more guessing. Saw real results within the first 6 weeks."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Alex P.</div>
+          <div class="testi-handle">@alexp_</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Best money I've spent on fitness. No fluff, no filler. Just exactly what you need to actually change your body."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Brittany W.</div>
+          <div class="testi-handle">@brittanyw</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Followed this for 8 weeks and the results were undeniable. My friends kept asking what I changed. This is what I changed."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Tyler S.</div>
+          <div class="testi-handle">@tylers_fit</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Finally a program that doesn't waste your time. Clear, simple, effective. My lifts went up every single week."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Nate H.</div>
+          <div class="testi-handle">@nateh</div>
+        </div>
+      </div>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"This program completely changed how I train. Down 22 lbs and I actually look the way I always wanted. Worth every dollar."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Marcus T.</div>
+          <div class="testi-handle">@marcust_</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I've tried so many programs and always quit. This is the first one I actually stuck with. The diet section alone was a game changer."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Jordan K.</div>
+          <div class="testi-handle">@jordank</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The exercise videos are incredible. Every movement broken down perfectly. Gained 11 lbs of muscle in 3 months following this."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Sarah M.</div>
+          <div class="testi-handle">@sarahm_fit</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Clay's mindset section hit different. I finally understand why I kept stalling and how to push through. Already referred three friends."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Devon R.</div>
+          <div class="testi-handle">@devonr</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The bulking and cutting breakdown is exactly what I needed. No more guessing. Saw real results within the first 6 weeks."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Alex P.</div>
+          <div class="testi-handle">@alexp_</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Best money I've spent on fitness. No fluff, no filler. Just exactly what you need to actually change your body."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Brittany W.</div>
+          <div class="testi-handle">@brittanyw</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Followed this for 8 weeks and the results were undeniable. My friends kept asking what I changed. This is what I changed."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Tyler S.</div>
+          <div class="testi-handle">@tylers_fit</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Finally a program that doesn't waste your time. Clear, simple, effective. My lifts went up every single week."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👤</div>
+        <div>
+          <div class="testi-name">Nate H.</div>
+          <div class="testi-handle">@nateh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+<!-- ══ CODES ══ -->
+<section id="codes">
+  <div class="section-header">
+    <p class="eyebrow">Shop</p>
+    <h2 class="section-title">My Favorite Brands</h2>
+  </div>
+
+  <div class="codes-grid">
+    <div class="code-card">
+      <div class="code-card-photo">
+        <img src="images/clay-dfyne.jpeg" alt="Clay wearing DFYNE" />
+      </div>
+      <div class="code-card-body">
+        <div class="code-brand">DFYNE</div>
+        <p class="code-desc">The brand I train in every single day — built for serious lifters who care about how they look.</p>
+        <button class="code-pill-btn" data-code="CLAY" onclick="copyCode(this)">
+          <span class="code-value">CLAY</span>
+          <span class="code-copy-hint">Tap to copy</span>
+        </button>
+        <a href="https://dfyne.com" class="code-shop-link" target="_blank" rel="noopener">Shop DFYNE →</a>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <div class="code-card-photo">
+        <img src="images/clay-gymlamp.jpeg" alt="Clay with Gymlamp" />
+      </div>
+      <div class="code-card-body">
+        <div class="code-brand">Gymlamp</div>
+        <p class="code-desc">Premium gym lighting that makes every session look as good as it feels.</p>
+        <button class="code-pill-btn" data-code="CLAY" onclick="copyCode(this)">
+          <span class="code-value">CLAY</span>
+          <span class="code-copy-hint">Tap to copy</span>
+        </button>
+        <a href="https://gymlamp.com" class="code-shop-link" target="_blank" rel="noopener">Shop Gymlamp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+<!-- ══ YOUTUBE ══ -->
+<section id="watch">
+  <div class="section-header">
+    <p class="eyebrow">YouTube</p>
+    <h2 class="section-title">Watch My Recent YouTube Video</h2>
+  </div>
+
+  <div class="video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/DhoIieo6TM8?start=31&autoplay=1&mute=1&rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="video-actions">
+    <a href="https://youtube.com/@clayjbower" class="btn" target="_blank" rel="noopener">
+      <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      Subscribe on YouTube
+    </a>
+    <a href="https://youtube.com/@clayjbower" class="btn btn-outline" target="_blank" rel="noopener">View Channel</a>
+  </div>
+</section>
+
+<hr class="section-divider" />
+<!-- ══ TIP JAR ══ -->
+<section id="tip-jar">
+  <div class="tip-jar-inner">
+    <p class="eyebrow">Support</p>
+    <h2 class="section-title">Tip Jar</h2>
+    <p class="tip-jar-sub">If my content has helped you — in the gym, with your diet, or just getting started — I'd genuinely appreciate it. Every bit goes right back into creating more free content for you.</p>
+    <div class="tip-buttons">
+      <a href="https://venmo.com/claybower" class="tip-btn" target="_blank" rel="noopener">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.79 1.604c.42.703.604 1.427.604 2.34 0 2.913-2.487 6.705-4.508 9.37H11.16L9.196 2.98l-4.1.394L7.33 22.396h7.107c3.16-4.02 6.295-10.262 6.295-14.49 0-2.47-.7-4.13-1.9-5.422z"/></svg>
+        Venmo
+      </a>
+      <a href="https://paypal.me/claybower" class="tip-btn" target="_blank" rel="noopener">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/></svg>
+        PayPal
+      </a>
+      <a href="https://cash.app/$yuebenjek6" class="tip-btn" target="_blank" rel="noopener">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.59 3.02C22.03 1.18 19.76 0 17.22 0H6.78C3.04 0 0 3.04 0 6.78v10.44C0 20.96 3.04 24 6.78 24h10.44c3.74 0 6.78-3.04 6.78-6.78V6.78c0-1.4-.43-2.7-1.41-3.76zm-6.57 13.3l-.42 1.54c-.04.17-.2.28-.38.26-.88-.09-1.74-.42-2.5-.92-.7.28-1.44.44-2.22.46-.2 0-.37-.14-.4-.34l-.23-1.42c-.04-.22.13-.42.35-.42h.08c.54-.02 1.07-.12 1.56-.3-.42-.44-.78-.94-1.06-1.5-.08-.16-.02-.35.13-.44l1.3-.74c.16-.09.36-.04.46.12.33.54.74.98 1.2 1.3.56-.4.9-1.04.9-1.74 0-.5-.2-.92-.64-1.12-.66-.3-1.82-.38-2.72-.86-1.04-.54-1.5-1.48-1.5-2.58 0-1.56.92-2.86 2.3-3.44l.2-1.42c.04-.2.22-.34.42-.32l1.44.18c.2.02.34.22.3.42l-.18 1.2c.7.16 1.36.46 1.94.9.14.1.16.3.06.44l-.9 1.14c-.12.14-.32.16-.46.04-.44-.34-.96-.56-1.5-.62-.6-.06-1.16.26-1.16.86 0 .44.22.74.62.92.52.22 1.2.32 1.9.56 1.54.52 2.1 1.56 2.1 2.92 0 1.4-.68 2.62-1.76 3.36l.18 1.16c.04.2-.1.4-.3.42l-1.44.2c-.2.02-.38-.1-.42-.3z"/></svg>
+        Cash App
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+<!-- ══ WORK WITH ME ══ -->
+<section id="work-with-me">
+  <div class="work-inner">
+    <p class="work-eyebrow">Collaborate</p>
+    <h2 class="work-title">Work With Me</h2>
+    <p class="work-sub">Brand deals, sponsorships, content partnerships, or anything else — I'm open to working with brands I actually believe in. Let's talk.</p>
+    <a href="mailto:clayjbower@gmail.com" class="work-email">clayjbower@gmail.com</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-name">Clay Bower</div>
+  <p class="footer-tagline">Built Different. Train Different.</p>
+  <div class="footer-socials">
+    <a href="https://youtube.com/@clayjbower" class="footer-social-pill" target="_blank" rel="noopener">
+      <svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      YouTube
+    </a>
+    <a href="https://tiktok.com/@clayjbower" class="footer-social-pill" target="_blank" rel="noopener">
+      <svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+      TikTok
+    </a>
+    <a href="https://instagram.com/clayb0wer" class="footer-social-pill" target="_blank" rel="noopener">
+      <svg width="11" height="11" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="mailto:clayjbower@gmail.com" class="footer-social-pill">clayjbower@gmail.com</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Clay Bower. All rights reserved.</p>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50)
+  }, { passive: true })
+
+  /* ── Newsletter modal ── */
+  const modal = document.getElementById('newsletter-modal')
+  document.getElementById('newsletter-btn').addEventListener('click', () => {
+    modal.classList.add('open')
+  })
+  document.getElementById('modal-close').addEventListener('click', () => {
+    modal.classList.remove('open')
+  })
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('open')
+  })
+
+  /* ── Klaviyo newsletter subscribe ── */
+  document.getElementById('newsletter-form').addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const btn = document.getElementById('nl-btn')
+    const name = document.getElementById('nl-name').value.trim()
+    const email = document.getElementById('nl-email').value.trim()
+    if (!email) return
+
+    btn.textContent = 'Subscribing...'
+    btn.disabled = true
+
+    try {
+      await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WL29v8', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'revision': '2024-02-15'
+        },
+        body: JSON.stringify({
+          data: {
+            type: 'subscription',
+            attributes: {
+              profile: {
+                data: {
+                  type: 'profile',
+                  attributes: {
+                    email: email,
+                    first_name: name
+                  }
+                }
+              },
+              custom_source: 'Website Newsletter'
+            },
+            relationships: {
+              list: {
+                data: {
+                  type: 'list',
+                  id: 'W5adJn'
+                }
+              }
+            }
+          }
+        })
+      })
+      btn.textContent = 'You\'re in!'
+      btn.style.background = '#2a6e36'
+      setTimeout(() => {
+        modal.classList.remove('open')
+        btn.textContent = 'Subscribe Free'
+        btn.style.background = ''
+        btn.disabled = false
+        document.getElementById('nl-name').value = ''
+        document.getElementById('nl-email').value = ''
+      }, 2000)
+    } catch (err) {
+      btn.textContent = 'Try again'
+      btn.style.background = '#c0392b'
+      btn.disabled = false
+      setTimeout(() => {
+        btn.textContent = 'Subscribe Free'
+        btn.style.background = ''
+      }, 2000)
+    }
+  })
+
+  /* ── Hero photo parallax (gentle translate, no tilt) ── */
+  const heroPhoto = document.getElementById('hero-photo')
+  if (heroPhoto) {
+    document.addEventListener('mousemove', e => {
+      const dx = (e.clientX / window.innerWidth - 0.5)
+      const dy = (e.clientY / window.innerHeight - 0.5)
+      heroPhoto.style.transform = `translate(${dx * 14}px, ${dy * 10}px)`
+    }, { passive: true })
+    document.addEventListener('mouseleave', () => {
+      heroPhoto.style.transform = ''
+    })
+  }
+
+  /* ── Program card 3D tilt ── */
+  const card = document.getElementById('program-card')
+  if (card) {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect()
+      const x = (e.clientX - rect.left) / rect.width - 0.5
+      const y = (e.clientY - rect.top) / rect.height - 0.5
+      card.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 5}deg) scale(1.01)`
+    })
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = ''
+    })
+  }
+
+  /* ── Copy code ── */
+  function copyCode(btn) {
+    const code = btn.dataset.code
+    const hint = btn.querySelector('.code-copy-hint')
+    navigator.clipboard.writeText(code).then(() => {
+      btn.classList.add('copied')
+      hint.textContent = 'Copied!'
+      setTimeout(() => {
+        btn.classList.remove('copied')
+        hint.textContent = 'Tap to copy'
+      }, 2200)
+    })
+  }
+</script>
+
+</body>
+</html>

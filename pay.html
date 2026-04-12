@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pay — Ascend Program</title>
+  <style>
+    @font-face {
+      font-family: 'Milker';
+      src: url('fonts/Milker.woff2') format('woff2'),
+           url('fonts/Milker.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { height: 100%; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Left: Product summary ── */
+    .pay-left {
+      background: #f7f7f7;
+      padding: 60px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pay-back {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.4);
+      text-decoration: none;
+      margin-bottom: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .pay-back:hover { color: rgba(0,0,0,0.8); }
+
+    .pay-product {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .pay-product-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: #0a0a0a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Milker', Georgia, serif;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .pay-product-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.88);
+      margin-bottom: 2px;
+    }
+
+    .pay-product-by {
+      font-size: 12px;
+      color: rgba(0,0,0,0.4);
+    }
+
+    .pay-amount {
+      font-size: 42px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.88);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .pay-amount-old {
+      font-size: 20px;
+      color: rgba(0,0,0,0.25);
+      text-decoration: line-through;
+      margin-left: 12px;
+      font-weight: 400;
+    }
+
+    .pay-onetime {
+      font-size: 13px;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 36px;
+    }
+
+    .pay-divider {
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+      margin-bottom: 28px;
+    }
+
+    .pay-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .pay-line-label {
+      font-size: 14px;
+      color: rgba(0,0,0,0.65);
+    }
+
+    .pay-line-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.88);
+    }
+
+    .pay-line-total {
+      padding-top: 16px;
+      margin-top: 8px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .pay-line-total .pay-line-label {
+      font-weight: 700;
+      color: rgba(0,0,0,0.88);
+    }
+
+    .pay-line-total .pay-line-value {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    /* ── Right: Payment form ── */
+    .pay-right {
+      background: #fff;
+      padding: 60px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .pay-form-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.88);
+      margin-bottom: 28px;
+    }
+
+    .pay-field {
+      margin-bottom: 18px;
+    }
+
+    .pay-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.55);
+      margin-bottom: 7px;
+    }
+
+    .pay-input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 15px;
+      color: rgba(0,0,0,0.88);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .pay-input:focus {
+      border-color: #0a0a0a;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+    }
+    .pay-input::placeholder { color: rgba(0,0,0,0.25); }
+
+    .pay-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .pay-card-icons {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .pay-card-icon {
+      width: 36px;
+      height: 24px;
+      border-radius: 4px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.4);
+    }
+
+    .pay-or {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .pay-or::before, .pay-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.08);
+    }
+    .pay-or span {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .pay-submit {
+      width: 100%;
+      padding: 16px;
+      background: #0a0a0a;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      margin-top: 8px;
+    }
+    .pay-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .paypal-submit {
+      width: 100%;
+      padding: 14px;
+      background: #0070BA;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .paypal-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,112,186,0.3);
+    }
+
+    .pay-secure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 11px;
+      color: rgba(0,0,0,0.25);
+    }
+
+    .pay-terms {
+      margin-top: 24px;
+      font-size: 10px;
+      color: rgba(0,0,0,0.25);
+      line-height: 1.6;
+      text-align: center;
+    }
+    .pay-terms a { color: rgba(0,0,0,0.35); text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      body { grid-template-columns: 1fr; }
+      .pay-left { padding: 120px 28px 40px; }
+      .pay-right { padding: 40px 28px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Left: Order summary -->
+<div class="pay-left">
+  <a href="checkout.html" class="pay-back">&larr; Back</a>
+
+  <div class="pay-product">
+    <div class="pay-product-icon">A</div>
+    <div>
+      <div class="pay-product-name">Ascend Program</div>
+      <div class="pay-product-by">by Clay Bower</div>
+    </div>
+  </div>
+
+  <div class="pay-amount">$29.00 <span class="pay-amount-old">$50.00</span></div>
+  <div class="pay-onetime">One-time payment</div>
+
+  <div class="pay-divider"></div>
+
+  <div class="pay-line">
+    <span class="pay-line-label">Ascend Program</span>
+    <span class="pay-line-value">$29.00</span>
+  </div>
+  <div class="pay-line">
+    <span class="pay-line-label">Discount</span>
+    <span class="pay-line-value" style="color: #16a34a;">-$21.00</span>
+  </div>
+  <div class="pay-line pay-line-total">
+    <span class="pay-line-label">Total</span>
+    <span class="pay-line-value">$29.00</span>
+  </div>
+</div>
+
+<!-- Right: Payment form -->
+<div class="pay-right">
+  <div class="pay-form-title">Pay with PayPal</div>
+
+  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=clayjbower%40gmail.com&item_name=Ascend+Program&amount=29.00&currency_code=USD&return=http%3A%2F%2Flocalhost%3A8080%2Fthanks.html&cancel_return=http%3A%2F%2Flocalhost%3A8080%2Fcheckout.html" class="paypal-submit">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.471z"/></svg>
+    Pay $29.00 with PayPal
+  </a>
+
+  <div class="pay-secure">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+    Secure payment powered by PayPal
+  </div>
+
+  <div class="pay-terms">
+    By completing this purchase you agree that all sales are final. This is a digital product and no refunds will be issued. Questions? <a href="mailto:clayjbower@gmail.com">clayjbower@gmail.com</a>
+  </div>
+</div>
+
+</body>
+</html>
