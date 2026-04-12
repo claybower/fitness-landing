@@ -25,13 +25,16 @@
 <!-- ══ NAV ══ -->
 <nav id="nav">
   <button class="nav-newsletter" id="newsletter-btn">Join My Newsletter</button>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#programs">Programs</a></li>
     <li><a href="#codes">Shop</a></li>
     <li><a href="#watch">Watch</a></li>
   </ul>
   <a href="index.html" class="nav-logo">Clay Bower</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -484,6 +487,20 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 50)
   }, { passive: true })
+
+  /* ── Mobile hamburger ── */
+  const hamburger = document.getElementById('nav-hamburger')
+  const navLinks = document.getElementById('nav-links')
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('nav-open')
+    })
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('nav-open')
+      })
+    })
+  }
 
   /* ── Newsletter modal ── */
   const modal = document.getElementById('newsletter-modal')
