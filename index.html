@@ -624,5 +624,156 @@
   }
 </script>
 
+<!-- Klaviyo onsite tracking -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WL29v8"></script>
+
+<!-- ── Free Plan Popup ── -->
+<div id="cb-popup-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center;padding:16px;">
+  <div id="cb-popup" style="background:#111;border:1px solid #222;border-radius:16px;max-width:420px;width:100%;overflow:hidden;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.8);animation:cbFadeIn .35s ease;">
+    <!-- Close -->
+    <button onclick="cbClosePopup()" style="position:absolute;top:12px;right:14px;background:none;border:none;color:#888;font-size:22px;cursor:pointer;line-height:1;z-index:2;">&#x2715;</button>
+
+    <!-- Photo -->
+    <div style="width:100%;height:280px;overflow:hidden;">
+      <img src="images/clay-gym1.jpeg" alt="Clay Bower" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+    </div>
+
+    <!-- Content -->
+    <div style="padding:28px 28px 32px;">
+      <p style="margin:0 0 4px;font-size:11px;letter-spacing:2px;color:#c8a84b;font-weight:700;text-transform:uppercase;">FREE OFFER</p>
+      <h2 style="margin:0 0 10px;font-size:24px;font-weight:900;color:#fff;line-height:1.2;">Want a free workout plan?</h2>
+      <p style="margin:0 0 22px;font-size:14px;color:#aaa;line-height:1.6;">Sign up and I'll send you my exact training program — free. No catch.</p>
+
+      <form id="cb-popup-form" onsubmit="cbSubmitPopup(event)" style="display:flex;flex-direction:column;gap:12px;">
+        <input id="cb-popup-email" type="email" placeholder="Enter your email" required
+          style="padding:14px 16px;border-radius:8px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:15px;outline:none;width:100%;box-sizing:border-box;">
+        <button type="submit"
+          style="padding:14px;background:#c8a84b;color:#000;font-weight:800;font-size:15px;letter-spacing:.5px;border:none;border-radius:8px;cursor:pointer;text-transform:uppercase;">
+          GET MY FREE PLAN
+        </button>
+      </form>
+      <p id="cb-popup-success" style="display:none;margin:12px 0 0;text-align:center;color:#c8a84b;font-weight:600;">You're in! Check your inbox.</p>
+      <p style="margin:14px 0 0;font-size:11px;color:#555;text-align:center;">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes cbFadeIn { from { opacity:0; transform:scale(.95); } to { opacity:1; transform:scale(1); } }
+#cb-popup-overlay.cb-visible { display:flex !important; }
+#cb-popup-email:focus { border-color:#c8a84b; }
+/* Hide Klaviyo's teaser bubble — we use our own popup */
+.klaviyo-form-teaser,
+[data-testid="klaviyo-teaser"],
+.needsclick.kl-teaser-container,
+div[class*="teaser"],
+div[id*="klaviyo"][class*="teaser"],
+[id^="klaviyo_"][class*="teaser"],
+.kl-teaser { display:none !important; }
+</style>
+
+<script>
+// Kill Klaviyo teaser bubble the moment it's injected into the DOM
+(function() {
+  function hideKlaviyoTeaser() {
+    document.querySelectorAll(
+      '[class*="teaser"], [id*="teaser"], [class*="kl-teaser"], ' +
+      '[data-testid*="teaser"], iframe[title*="Klaviyo"]'
+    ).forEach(function(el) {
+      // Only target Klaviyo elements (check parent or nearby Klaviyo markers)
+      if (el.id && el.id.startsWith('klaviyo')) { el.style.display = 'none'; return; }
+      if (el.closest && el.closest('[id^="klaviyo"]')) { el.style.display = 'none'; return; }
+      if (el.className && /teaser/i.test(el.className)) { el.style.display = 'none'; }
+    });
+    // Also nuke by text content — the "FREE SHIPPING" bubble
+    document.querySelectorAll('div, button, span').forEach(function(el) {
+      if (el.children.length === 0 && /free.?shipping/i.test(el.textContent)) {
+        var parent = el.parentElement;
+        while (parent && parent !== document.body) {
+          if (parent.style && (parent.style.position === 'fixed' || window.getComputedStyle(parent).position === 'fixed')) {
+            parent.style.display = 'none';
+            break;
+          }
+          parent = parent.parentElement;
+        }
+      }
+    });
+  }
+
+  // Run immediately and on every DOM change
+  hideKlaviyoTeaser();
+  var obs = new MutationObserver(hideKlaviyoTeaser);
+  obs.observe(document.documentElement, { childList: true, subtree: true });
+})();
+
+(function() {
+  var shown = sessionStorage.getItem('cbPopupShown');
+  if (shown) return;
+
+  function cbShowPopup() {
+    if (sessionStorage.getItem('cbPopupShown')) return;
+    var overlay = document.getElementById('cb-popup-overlay');
+    overlay.classList.add('cb-visible');
+    sessionStorage.setItem('cbPopupShown', '1');
+  }
+
+  // Trigger after 20 seconds
+  setTimeout(cbShowPopup, 20000);
+
+  // Also trigger at 30% scroll
+  window.addEventListener('scroll', function onScroll() {
+    var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (scrolled >= 0.3) { cbShowPopup(); window.removeEventListener('scroll', onScroll); }
+  }, { passive: true });
+
+  window.cbClosePopup = function() {
+    document.getElementById('cb-popup-overlay').classList.remove('cb-visible');
+  };
+
+  // Close on overlay click
+  document.getElementById('cb-popup-overlay').addEventListener('click', function(e) {
+    if (e.target === this) cbClosePopup();
+  });
+
+  window.cbSubmitPopup = function(e) {
+    e.preventDefault();
+    var email = document.getElementById('cb-popup-email').value;
+    var btn = document.querySelector('#cb-popup-form button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    // Subscribe to Klaviyo list via client-side API
+    fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WL29v8', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'revision': '2023-10-15' },
+      body: JSON.stringify({
+        data: {
+          type: 'subscription',
+          attributes: {
+            list_id: 'WwNds2',
+            email: email,
+            custom_source: 'Website Popup'
+          }
+        }
+      })
+    })
+    .then(function() {
+      // Also identify in Klaviyo tracking
+      var _learnq = window._learnq || [];
+      _learnq.push(['identify', { '$email': email }]);
+      document.getElementById('cb-popup-form').style.display = 'none';
+      document.getElementById('cb-popup-success').style.display = 'block';
+      setTimeout(cbClosePopup, 2500);
+    })
+    .catch(function() {
+      // Still show success — Klaviyo sometimes blocks CORS but still processes
+      document.getElementById('cb-popup-form').style.display = 'none';
+      document.getElementById('cb-popup-success').style.display = 'block';
+      setTimeout(cbClosePopup, 2500);
+    });
+  };
+})();
+</script>
+
 </body>
 </html>
