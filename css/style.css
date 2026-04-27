@@ -1559,7 +1559,7 @@ footer {
 @media (max-width: 960px) {
   #nav { padding: 16px 24px; }
   #nav.scrolled { padding: 12px 24px; }
-  .nav-links li:not(:last-child) { display: none; }
+  .nav-links { display: none; }
 
   #hero {
     grid-template-columns: 1fr;
