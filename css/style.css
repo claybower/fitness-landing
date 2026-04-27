@@ -521,6 +521,11 @@ body {
   margin-bottom: 52px;
 }
 
+.inside-grid--four {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 760px;
+}
+
 .inside-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -565,6 +570,114 @@ body {
 }
 
 .inside-cta { text-align: center; }
+
+/* ══════════════════════════════════════════════════════
+   INTERFACE / SNEAK PEEK
+   ══════════════════════════════════════════════════════ */
+#interface {
+  padding: 100px 52px;
+  background: var(--bg-alt);
+}
+
+.interface-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.interface-title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  margin-bottom: 24px;
+}
+
+.interface-body { margin-bottom: 20px; }
+.interface-body + .btn { margin-top: 16px; }
+
+.interface-mockup-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.interface-mockup {
+  width: 280px;
+  max-width: 100%;
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 8px solid #1a1a1a;
+  background: #fff;
+}
+
+.interface-mockup-inner {
+  background: #fff;
+  padding: 24px 20px;
+}
+
+.interface-mockup-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.interface-mockup-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.interface-mockup-heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--text-dark);
+}
+
+.interface-toc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.interface-toc-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-alt);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.interface-toc-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--black);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.interface-toc-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.interface-toc-desc {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
 
 /* ══════════════════════════════════════════════════════
    HOW I THINK ABOUT FITNESS
@@ -1462,6 +1575,12 @@ footer {
   .about-photo-card { max-width: 360px; aspect-ratio: 1/1; }
 
   .inside-grid { grid-template-columns: 1fr 1fr; }
+  .inside-grid--four { grid-template-columns: 1fr 1fr; }
+
+  #interface { padding: 70px 24px; }
+  .interface-inner { grid-template-columns: 1fr; gap: 48px; }
+  .interface-text { text-align: center; }
+  .interface-text .body-text { margin-left: auto; margin-right: auto; }
 
   .app-preview-inner { grid-template-columns: 1fr; gap: 48px; }
   .phone-frame { display: none; }
@@ -1490,7 +1609,29 @@ footer {
 }
 
 @media (max-width: 600px) {
+  html, body { overflow-x: hidden; }
+
   .inside-grid { grid-template-columns: 1fr; }
+  .inside-grid--four { grid-template-columns: 1fr; max-width: 100%; }
+
+  .hero-title { white-space: normal; }
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn { text-align: center; justify-content: center; }
+
+  .hero-transform-half img { height: 360px; }
+
+  #interface { padding: 56px 20px; }
+  .interface-inner { gap: 36px; }
+  .interface-title { font-size: clamp(28px, 8vw, 36px); margin-bottom: 16px; }
+
+  #cta-band { padding: 64px 24px; }
+  .cta-band-title { margin-bottom: 20px; }
+  .cta-band-sub { margin-bottom: 28px; }
+
+  #faq { padding: 64px 16px; }
+  .faq-inner { margin-top: 32px; }
+
+  #testimonials { padding-top: 56px; padding-bottom: 56px; }
+  #inside { padding-top: 56px; padding-bottom: 56px; }
+  .inside-header { margin-bottom: 36px !important; }
 }
