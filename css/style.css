@@ -1568,7 +1568,7 @@ footer {
   }
 
   .hero-right { display: none; }
-  .hero-left { padding-right: 0; padding-bottom: 60px; }
+  .hero-left { padding-bottom: 60px; }
   .hero-stats { display: none; }
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
