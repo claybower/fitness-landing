@@ -278,19 +278,25 @@ body {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5.2vw, 72px);
   font-weight: normal;
-  line-height: 1.02;
   color: var(--black);
   margin-bottom: 24px;
   letter-spacing: -0.01em;
 }
 
+.hero-title-main {
+  display: block;
+  font-size: clamp(40px, 9vw, 72px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .hero-title-sub {
-  display: inline-block;
-  font-size: 0.52em;
+  display: block;
+  font-size: clamp(22px, 5vw, 38px);
   letter-spacing: 0.04em;
-  margin-top: 0;
+  line-height: 1;
+  margin-top: 2px;
   color: var(--text-dark);
 }
 
@@ -1621,7 +1627,7 @@ footer {
   .inside-grid { grid-template-columns: 1fr; }
   .inside-grid--four { grid-template-columns: 1fr; max-width: 100%; }
 
-  .hero-title { white-space: normal; }
+  .hero-left { padding-left: 16px; padding-right: 16px; }
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn { text-align: center; justify-content: center; }
 
