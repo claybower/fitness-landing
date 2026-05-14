@@ -733,19 +733,36 @@
     // Subscribe to Klaviyo list via client-side API
     fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WL29v8', {
       method: 'POST',
-      headers: { 'content-type': 'application/json', 'revision': '2023-10-15' },
+      headers: { 'content-type': 'application/json', 'revision': '2024-02-15' },
       body: JSON.stringify({
         data: {
           type: 'subscription',
           attributes: {
-            list_id: 'WwNds2',
-            email: email,
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: email
+                }
+              }
+            },
             custom_source: 'Website Popup'
+          },
+          relationships: {
+            list: {
+              data: {
+                type: 'list',
+                id: 'WwNds2'
+              }
+            }
           }
         }
       })
     })
-    .then(function() {
+    .then(function(response) {
+      if (!response.ok && response.status !== 202) {
+        throw new Error('Klaviyo API error: ' + response.status);
+      }
       // Also identify in Klaviyo tracking
       var _learnq = window._learnq || [];
       _learnq.push(['identify', { '$email': email }]);
@@ -753,11 +770,10 @@
       document.getElementById('cb-popup-success').style.display = 'block';
       setTimeout(cbClosePopup, 2500);
     })
-    .catch(function() {
-      // Still show success — Klaviyo sometimes blocks CORS but still processes
-      document.getElementById('cb-popup-form').style.display = 'none';
-      document.getElementById('cb-popup-success').style.display = 'block';
-      setTimeout(cbClosePopup, 2500);
+    .catch(function(err) {
+      console.error('Klaviyo subscribe error:', err);
+      btn.textContent = 'Try again';
+      btn.disabled = false;
     });
   };
 })();
