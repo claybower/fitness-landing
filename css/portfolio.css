@@ -250,9 +250,10 @@
 /* ── UGC vertical video wall (9:16) ── */
 .ugc-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
   margin-top: 8px;
+  align-items: start;
 }
 .ugc-card { display: flex; flex-direction: column; }
 .ugc-media {
@@ -271,6 +272,15 @@
   object-fit: cover;
   display: block;
 }
+/* Instagram official embed (embed.js self-sizes the iframe height) */
+.ugc-card .instagram-media {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
 .ugc-caption {
   margin-top: 12px;
 }
