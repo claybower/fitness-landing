@@ -1154,7 +1154,7 @@ footer {
   box-shadow: 0 14px 34px rgba(28,43,58,0.22);
   transform: rotate(2deg);
   margin: 10px auto 0;
-  max-width: 88%;
+  max-width: 78%;
   overflow: hidden;
   padding-bottom: 14px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
