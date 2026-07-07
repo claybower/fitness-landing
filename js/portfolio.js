@@ -7,7 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav()
   initScrollReveal()
   initLightbox()
+  initAnalytics()
 })
+
+/* ── Live analytics: fetch analytics.json, update the numbers ── */
+function initAnalytics() {
+  if (!document.getElementById('analytics')) return
+
+  const commas = n => Number(n).toLocaleString('en-US')
+  const abbr = n => {
+    n = Number(n)
+    if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
+    if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
+    return String(n)
+  }
+  const set = (key, val) => {
+    const el = document.querySelector(`[data-an="${key}"]`)
+    if (el != null && val != null) el.textContent = val
+  }
+
+  fetch('analytics.json?t=' + Date.now())
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => {
+      set('total', commas(d.total))
+      ;['instagram', 'tiktok', 'youtube'].forEach(p => {
+        if (!d[p]) return
+        set(`${p}-followers`, commas(d[p].followers))
+        set(`${p}-weekly`, commas(d[p].weekly))
+        set(`${p}-reach`, abbr(d[p].reach))
+      })
+      if (d.updated) {
+        const dt = new Date(d.updated + 'T00:00:00')
+        set('updated', dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }))
+      }
+    })
+    .catch(() => { /* keep the baked-in fallback numbers */ })
+}
 
 /* ── Nav: scroll shadow + mobile hamburger ── */
 function initNav() {

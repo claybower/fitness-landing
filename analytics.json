@@ -1,0 +1,22 @@
+{
+  "updated": "2026-07-06",
+  "total": 64791,
+  "instagram": {
+    "followers": 29779,
+    "weekly": 774,
+    "reach": 248907,
+    "reach_label": "Views \u00b7 30d"
+  },
+  "tiktok": {
+    "followers": 32772,
+    "weekly": 409,
+    "reach": 1347646,
+    "reach_label": "Total likes"
+  },
+  "youtube": {
+    "followers": 2240,
+    "weekly": 63,
+    "reach": 638547,
+    "reach_label": "Total views"
+  }
+}
