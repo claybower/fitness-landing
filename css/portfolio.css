@@ -522,3 +522,66 @@
 @media (max-width: 900px) {
   .an-grid { grid-template-columns: 1fr; max-width: 420px; }
 }
+
+/* ── Analytics: growth subline + "full picture" tiles ── */
+.an-total-growth {
+  font-size: 13px;
+  color: #2a7d3f;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.an-total-growth b { font-weight: 800; }
+.an-metrics-head {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--navy);
+  margin: 54px 0 24px;
+}
+.an-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.an-tile {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 26px 22px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.an-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.an-tile-num {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 42px);
+  color: var(--blue);
+  line-height: 1;
+}
+.an-tile-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-top: 11px;
+}
+.an-tile-label span {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--text-muted);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+@media (max-width: 900px) {
+  .an-tiles { grid-template-columns: repeat(2, 1fr); max-width: 440px; }
+}
+@media (max-width: 480px) {
+  .an-tiles { grid-template-columns: 1fr; max-width: 320px; }
+}

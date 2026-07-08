@@ -17,28 +17,35 @@ function initAnalytics() {
   const commas = n => Number(n).toLocaleString('en-US')
   const abbr = n => {
     n = Number(n)
-    if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
-    if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
+    if (n >= 1e6) return +(n / 1e6).toFixed(2) + 'M'
+    if (n >= 1e5) return Math.round(n / 1e3) + 'K'
+    if (n >= 1e3) return +(n / 1e3).toFixed(1) + 'K'
     return String(n)
   }
-  const set = (key, val) => {
-    const el = document.querySelector(`[data-an="${key}"]`)
-    if (el != null && val != null) el.textContent = val
+  const setAll = (key, val) => {
+    if (val == null) return
+    document.querySelectorAll(`[data-an="${key}"]`).forEach(el => { el.textContent = val })
   }
 
   fetch('analytics.json?t=' + Date.now())
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(d => {
-      set('total', commas(d.total))
+      setAll('total', commas(d.total))
+      setAll('growth-90d', '+' + commas(d.growth_90d))
+      setAll('reach-30d', abbr(d.reach_30d))
+      setAll('reach-90d', abbr(d.reach_90d))
+      setAll('lifetime-likes', abbr(d.lifetime_likes))
+      setAll('content-total', commas(d.content_total))
+      setAll('ig-engagement', d.ig_engagement + '%')
       ;['instagram', 'tiktok', 'youtube'].forEach(p => {
         if (!d[p]) return
-        set(`${p}-followers`, commas(d[p].followers))
-        set(`${p}-weekly`, commas(d[p].weekly))
-        set(`${p}-reach`, abbr(d[p].reach))
+        setAll(`${p}-followers`, commas(d[p].followers))
+        setAll(`${p}-weekly`, commas(d[p].weekly))
+        setAll(`${p}-reach`, abbr(d[p].reach))
       })
       if (d.updated) {
         const dt = new Date(d.updated + 'T00:00:00')
-        set('updated', dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }))
+        setAll('updated', dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }))
       }
     })
     .catch(() => { /* keep the baked-in fallback numbers */ })
