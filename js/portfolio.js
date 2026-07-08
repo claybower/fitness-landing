@@ -10,45 +10,93 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnalytics()
 })
 
-/* ── Live analytics: fetch analytics.json, update the numbers ── */
+/* ── Live analytics: interactive platform + period toggle dashboard ── */
 function initAnalytics() {
-  if (!document.getElementById('analytics')) return
+  const root = document.getElementById('analytics')
+  if (!root) return
 
   const commas = n => Number(n).toLocaleString('en-US')
   const abbr = n => {
+    if (n == null) return '—'
     n = Number(n)
     if (n >= 1e6) return +(n / 1e6).toFixed(2) + 'M'
     if (n >= 1e5) return Math.round(n / 1e3) + 'K'
     if (n >= 1e3) return +(n / 1e3).toFixed(1) + 'K'
     return String(n)
   }
-  const setAll = (key, val) => {
-    if (val == null) return
-    document.querySelectorAll(`[data-an="${key}"]`).forEach(el => { el.textContent = val })
+  const plabel = pr => (pr === '30d' ? 'Last 30 days' : 'Last 90 days')
+  const tile = (num, label, sub) =>
+    `<div class="an-tile"><div class="an-tile-num">${num}</div><div class="an-tile-label">${label}<span>${sub}</span></div></div>`
+
+  let DATA = window.AN_FALLBACK || null
+  let platform = 'all'
+  let period = '30d'
+
+  function render() {
+    if (!DATA || !DATA[platform]) return
+    const p = DATA[platform]
+    const num = document.getElementById('an-headline-num')
+    const label = document.getElementById('an-headline-label')
+    const link = document.getElementById('an-headline-link')
+    let html = ''
+
+    if (platform === 'all') {
+      num.textContent = commas(p.audience)
+      label.textContent = 'Total Audience Across Platforms'
+      link.style.display = 'none'
+      html += tile('+' + commas(p.growth[period]), 'Followers Gained', plabel(period))
+      html += tile(abbr(p.reach[period]), 'Views', 'Instagram + YouTube · ' + plabel(period).toLowerCase())
+      html += tile(commas(p.content), 'Content Published', 'Posts + videos, all platforms')
+      html += tile(abbr(p.likes), 'Total Likes', 'TikTok, all-time')
+    } else {
+      num.textContent = commas(p.followers)
+      label.textContent = p.followers_label
+      link.textContent = p.handle + ' ↗'
+      link.href = p.url
+      link.style.display = 'inline-block'
+      const gained = (p.followers_label === 'Subscribers' ? 'Subscribers' : 'Followers') + ' Gained'
+      html += tile('+' + commas(p.growth[period]), gained, plabel(period))
+      if (p.reach && p.reach[period] != null) html += tile(abbr(p.reach[period]), 'Views', plabel(period))
+      if (platform === 'instagram') {
+        html += tile(p.engagement + '%', 'Avg Engagement', 'Recent posts')
+        html += tile(commas(p.content), 'Posts Published', 'All-time')
+      } else if (platform === 'tiktok') {
+        html += tile(abbr(p.likes), 'Total Likes', 'All-time')
+        html += tile(commas(p.content), 'Videos Published', 'All-time')
+      } else if (platform === 'youtube') {
+        html += tile(abbr(p.total_views), 'Total Views', 'All-time')
+        html += tile(commas(p.content), 'Videos Published', 'All-time')
+      }
+    }
+    document.getElementById('an-stats').innerHTML = html
   }
+
+  root.querySelectorAll('[data-platform]').forEach(b => b.addEventListener('click', () => {
+    platform = b.dataset.platform
+    root.querySelectorAll('[data-platform]').forEach(x => x.classList.toggle('is-active', x === b))
+    render()
+  }))
+  root.querySelectorAll('[data-period]').forEach(b => b.addEventListener('click', () => {
+    period = b.dataset.period
+    root.querySelectorAll('[data-period]').forEach(x => x.classList.toggle('is-active', x === b))
+    render()
+  }))
+
+  render()
 
   fetch('analytics.json?t=' + Date.now())
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(d => {
-      setAll('total', commas(d.total))
-      setAll('growth-90d', '+' + commas(d.growth_90d))
-      setAll('reach-30d', abbr(d.reach_30d))
-      setAll('reach-90d', abbr(d.reach_90d))
-      setAll('lifetime-likes', abbr(d.lifetime_likes))
-      setAll('content-total', commas(d.content_total))
-      setAll('ig-engagement', d.ig_engagement + '%')
-      ;['instagram', 'tiktok', 'youtube'].forEach(p => {
-        if (!d[p]) return
-        setAll(`${p}-followers`, commas(d[p].followers))
-        setAll(`${p}-weekly`, commas(d[p].weekly))
-        setAll(`${p}-reach`, abbr(d[p].reach))
-      })
+      DATA = d
       if (d.updated) {
         const dt = new Date(d.updated + 'T00:00:00')
-        setAll('updated', dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }))
+        document.querySelectorAll('[data-an="updated"]').forEach(el => {
+          el.textContent = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        })
       }
+      render()
     })
-    .catch(() => { /* keep the baked-in fallback numbers */ })
+    .catch(() => { /* keep inline fallback data */ })
 }
 
 /* ── Nav: scroll shadow + mobile hamburger ── */

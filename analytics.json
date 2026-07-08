@@ -1,34 +1,69 @@
 {
   "updated": "2026-07-07",
-  "total": 64826,
-  "growth_30d": 4923,
-  "growth_90d": 15229,
-  "reach_30d": 271553,
-  "reach_90d": 1041906,
-  "content_total": 2241,
-  "lifetime_likes": 1348244,
-  "ig_engagement": 2.7,
-  "ig_avg_likes": 787,
-  "yt_avg_views": 1544,
+  "all": {
+    "label": "All Platforms",
+    "audience": 64826,
+    "content": 2241,
+    "likes": 1348244,
+    "growth": {
+      "30d": 4923,
+      "90d": 15229
+    },
+    "reach": {
+      "30d": 271553,
+      "90d": 1041906
+    }
+  },
   "instagram": {
+    "label": "Instagram",
+    "handle": "@clayb0wer",
+    "url": "https://instagram.com/clayb0wer",
     "followers": 29779,
-    "weekly": 774,
-    "growth_90d": 12147,
-    "reach": 248907,
-    "reach_label": "Views \u00b7 30d"
+    "followers_label": "Followers",
+    "content": 352,
+    "engagement": 2.7,
+    "growth": {
+      "30d": 3613,
+      "90d": 12147
+    },
+    "reach": {
+      "30d": 248907,
+      "90d": 908368
+    }
   },
   "tiktok": {
+    "label": "TikTok",
+    "handle": "@clayjbower",
+    "url": "https://tiktok.com/@clayjbower",
     "followers": 32807,
-    "weekly": 409,
-    "growth_90d": 2608,
-    "reach": 1348244,
-    "reach_label": "Total likes"
+    "followers_label": "Followers",
+    "content": 1475,
+    "likes": 1348244,
+    "growth": {
+      "30d": 1187,
+      "90d": 2608
+    },
+    "reach": {
+      "30d": null,
+      "90d": null
+    }
   },
   "youtube": {
+    "label": "YouTube",
+    "handle": "@clayjbower",
+    "url": "https://youtube.com/@clayjbower",
     "followers": 2240,
-    "weekly": 63,
-    "growth_90d": 474,
-    "reach": 639321,
-    "reach_label": "Total views"
+    "followers_label": "Subscribers",
+    "content": 414,
+    "total_views": 639321,
+    "avg_views": 1544,
+    "growth": {
+      "30d": 123,
+      "90d": 474
+    },
+    "reach": {
+      "30d": 22646,
+      "90d": 133538
+    }
   }
 }
