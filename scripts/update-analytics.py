@@ -82,6 +82,18 @@ data = {
     },
 }
 
+# Audience demographics (Instagram) — only included once the demographics
+# pull has run (refresh-instagram-demographics.py). Absent until then.
+demo = ig.get("demographics")
+if demo:
+    data["demographics"] = {
+        "source": "Instagram",
+        "age": demo.get("age"),
+        "gender": demo.get("gender"),
+        "country": demo.get("country"),
+        "city": demo.get("city"),
+    }
+
 with open(OUT, "w") as f:
     json.dump(data, f, indent=2)
 print("Wrote", os.path.abspath(OUT))

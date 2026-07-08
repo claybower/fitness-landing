@@ -82,6 +82,26 @@ function initAnalytics() {
     render()
   }))
 
+  /* Audience demographics (shown only if analytics.json has them) */
+  function renderDemo(dim) {
+    const rows = DATA && DATA.demographics && DATA.demographics[dim]
+    const box = document.getElementById('an-demo-bars')
+    if (!rows || !rows.length || !box) return
+    const sum = rows.reduce((a, r) => a + (r.value || 0), 0) || 1
+    const max = Math.max(...rows.map(r => r.value || 0)) || 1
+    box.innerHTML = rows.map(r => {
+      const pct = Math.round((r.value / sum) * 100)
+      const w = Math.round((r.value / max) * 100)
+      return `<div class="an-bar-row"><span class="an-bar-label">${r.label}</span>` +
+             `<span class="an-bar-track"><span class="an-bar-fill" style="width:${w}%"></span></span>` +
+             `<span class="an-bar-pct">${pct}%</span></div>`
+    }).join('')
+  }
+  root.querySelectorAll('[data-demo]').forEach(b => b.addEventListener('click', () => {
+    root.querySelectorAll('[data-demo]').forEach(x => x.classList.toggle('is-active', x === b))
+    renderDemo(b.dataset.demo)
+  }))
+
   render()
 
   fetch('analytics.json?t=' + Date.now())
@@ -95,6 +115,12 @@ function initAnalytics() {
         })
       }
       render()
+      const demoBox = document.getElementById('an-demo')
+      if (demoBox && d.demographics) {
+        const first = root.querySelector('[data-demo].is-active')
+        demoBox.style.display = ''
+        renderDemo(first ? first.dataset.demo : 'age')
+      }
     })
     .catch(() => { /* keep inline fallback data */ })
 }
