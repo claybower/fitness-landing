@@ -69,6 +69,17 @@ function initAnalytics() {
       }
     }
     document.getElementById('an-stats').innerHTML = html
+
+    // Demographics are Instagram-only — show for All/Instagram, hide for TikTok/YouTube
+    const demoBox = document.getElementById('an-demo')
+    if (demoBox) {
+      const showDemo = DATA.demographics && (platform === 'all' || platform === 'instagram')
+      demoBox.style.display = showDemo ? '' : 'none'
+      if (showDemo) {
+        const active = root.querySelector('[data-demo].is-active')
+        renderDemo(active ? active.dataset.demo : 'age')
+      }
+    }
   }
 
   root.querySelectorAll('[data-platform]').forEach(b => b.addEventListener('click', () => {
@@ -115,12 +126,6 @@ function initAnalytics() {
         })
       }
       render()
-      const demoBox = document.getElementById('an-demo')
-      if (demoBox && d.demographics) {
-        const first = root.querySelector('[data-demo].is-active')
-        demoBox.style.display = ''
-        renderDemo(first ? first.dataset.demo : 'age')
-      }
     })
     .catch(() => { /* keep inline fallback data */ })
 }

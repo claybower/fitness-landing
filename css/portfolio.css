@@ -692,9 +692,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.an-bar-track { background: var(--cream-deep); border-radius: 100px; height: 12px; overflow: hidden; }
+.an-bar-track { display: block; background: var(--cream-deep); border-radius: 100px; height: 12px; overflow: hidden; }
 .an-bar-fill {
+  display: block;
   height: 100%;
+  min-width: 6px;
   background: linear-gradient(90deg, var(--blue), var(--blue-dark));
   border-radius: 100px;
   width: 0;
