@@ -2,23 +2,25 @@
   "updated": "2026-07-09",
   "all": {
     "label": "All Platforms",
-    "audience": 64996,
+    "audience": 64994,
     "content": 2248,
-    "likes": 1349647,
+    "likes": 1349665,
+    "partners": "25+",
+    "revenue": "$50K+",
     "growth": {
-      "30d": 4276,
-      "90d": 15095
+      "30d": 4275,
+      "90d": 15094
     },
     "reach": {
-      "30d": 228226,
-      "90d": 964252
+      "30d": 228400,
+      "90d": 964426
     }
   },
   "instagram": {
     "label": "Instagram",
     "handle": "@clayb0wer",
     "url": "https://instagram.com/clayb0wer",
-    "followers": 29891,
+    "followers": 29890,
     "followers_label": "Followers",
     "content": 355,
     "engagement": 2.8,
@@ -27,21 +29,21 @@
       "90d": 11981
     },
     "reach": {
-      "30d": 204505,
-      "90d": 850744
+      "30d": 204679,
+      "90d": 850918
     }
   },
   "tiktok": {
     "label": "TikTok",
     "handle": "@clayjbower",
     "url": "https://tiktok.com/@clayjbower",
-    "followers": 32865,
+    "followers": 32864,
     "followers_label": "Followers",
     "content": 1478,
-    "likes": 1349647,
+    "likes": 1349665,
     "growth": {
-      "30d": 1141,
-      "90d": 2666
+      "30d": 1140,
+      "90d": 2665
     },
     "reach": {
       "30d": null,

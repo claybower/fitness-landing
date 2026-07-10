@@ -48,6 +48,10 @@ def combined_views(k):
     return (pv(ig, k) or 0) + (pv(yt, k) or 0)   # TikTok period-views not exposed by API
 
 
+# Manually-maintained business metrics (not from a live API — edit here to update)
+MANUAL_PARTNERS = "25+"
+MANUAL_REVENUE = "$50K+"
+
 data = {
     "updated": datetime.date.today().isoformat(),
     "all": {
@@ -55,6 +59,8 @@ data = {
         "audience": ig_f + tk_f + yt_f,
         "content": ig.get("media_count", 0) + tk.get("video_count", 0) + yt.get("video_count", 0),
         "likes": tk.get("likes_count", 0),
+        "partners": MANUAL_PARTNERS,
+        "revenue": MANUAL_REVENUE,
         "growth": {"30d": combined("30d"), "90d": combined("90d")},
         "reach": {"30d": combined_views("30d"), "90d": combined_views("90d")},
     },

@@ -48,6 +48,8 @@ function initAnalytics() {
       html += tile(abbr(p.reach[period]), 'Views', 'Instagram + YouTube · ' + plabel(period).toLowerCase())
       html += tile(commas(p.content), 'Content Published', 'Posts + videos, all platforms')
       html += tile(abbr(p.likes), 'Total Likes', 'TikTok, all-time')
+      if (p.partners) html += tile(p.partners, 'Brand Partners', 'Paid collaborations')
+      if (p.revenue) html += tile(p.revenue, 'Revenue Generated', 'Across brand deals')
     } else {
       num.textContent = commas(p.followers)
       label.textContent = p.followers_label
